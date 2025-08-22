@@ -1,0 +1,17 @@
+[workspace]
+authors = ["Goodman <Cooper.Goodman@charlottenc.gov>"]
+channels = ["conda-forge"]
+name = "monte-carlo-example"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+black = ">=25.1.0,<26"
+pandas = ">=2.3.2,<3"
+shapely = ">=2.1.1,<3"
+plotly = ">=6.3.0,<7"
+polars = ">=1.32.3,<2"
+ipykernel = ">=6.30.1,<7"
+pyarrow = ">=21.0.0,<22"
