@@ -1,3 +1,6 @@
 # pixi environments
 .pixi/*
 !.pixi/config.toml
+
+src/monte_carlo_example/figs/*
+src/monte_carlo_example/notebooks/*
