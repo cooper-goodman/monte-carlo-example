@@ -23,8 +23,33 @@ SQUARE = Polygon(((0, 0), (0, 4), (4, 4), (4, 0)))
 # ```
 INSCRIBED_CIRCLE = SQUARE.centroid.buffer(
     distance=2,  # Radius
-    quad_segs=1000,  # Such circular, much wow
+    quad_segs=10000,  # Such circular, much wow
 )
+
+
+def create_seed_list(size: int, seed: int | None = None) -> list[int]:
+    """Create a list of randomly generated positive integers matching the length of an input list
+    of years for which the simulation is to be run.
+
+    Args:
+        size (int): Length of the list of list of randomly generated integers to create.
+        seed (int | None, optional): Main random seed used to make repeated simulations deterministic. Defaults to None.
+
+    Returns:
+        list[int]: List of randomly generated integers ranging from 1 to the max 32bit integer value.
+    """
+
+    # Set main random seed value
+    # Random state seed can be left off by default or set with integer
+    np.random.seed(seed=seed)
+
+    # Get a list of random seed integers using main random seed
+    # Generated seed value can be from 1 to max int32
+    # Positive integers for polars.DataFrame.sample -> OverflowError: can't convert negative int to unsigned
+    # np.random.randint only supports up to max int32
+    seed_list = np.random.randint(1, np.iinfo(np.int32).max, size=size).tolist()
+
+    return seed_list
 
 
 def generate_random_points(
