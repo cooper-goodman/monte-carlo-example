@@ -7,6 +7,7 @@ def create_estimate_figure(
     df: pd.DataFrame,
     x_label: str = "observations",
     y_label: str = "pi_estimate",
+    color: str | None = None,
 ) -> None:
     """
     Create a scatter plot of `pi` estimates and save it as an HTML file.
@@ -18,6 +19,7 @@ def create_estimate_figure(
         df (pd.DataFrame): DataFrame containing the data to plot.
         x_label (str, optional): Label for the x-axis (e.g., number of observations). Defaults to "observations".
         y_label (str, optional): Label for the y-axis (e.g., running estimate of `pi`). Defaults to "pi_estimate".
+        color (str | None, optional) Dimension for scatter dot colors. Defaults to None.
 
     Example:
 
@@ -34,6 +36,6 @@ def create_estimate_figure(
         ```
     """
 
-    fig = px.scatter(data_frame=df, x=x_label, y=y_label)
+    fig = px.scatter(data_frame=df, x=x_label, y=y_label, color=color)
     fig.add_hline(y=3.14159265359, line_color="red")
     fig.write_html(file)
