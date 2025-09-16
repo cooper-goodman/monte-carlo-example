@@ -39,5 +39,5 @@ pixi install
 Dependencies can also be installed with `pip`.
 
 ```bash
-pip install pandas shapely plotly polars pyarrow
+pip install pandas shapely plotly polars pyarrow matplotlib
 ```
